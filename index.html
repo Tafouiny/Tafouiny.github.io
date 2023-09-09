@@ -1,1 +1,87 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <title>Forum</title>
+  </head>
+
+  <body>
+    <div class="nav">
+      {{if .Session.Token}} {{template "navbar_connected.html" .}} {{else}} {{template "navbar_disconnected.html" .}}
+      {{end}}
+    </div>
+    <main>
+      <div class="container">
+        <div class="left-column">
+          <h2>01 forum</h2>
+          <p>
+            Welcome to our vibrant community where diverse voices come together to discuss everything under the sun! 01
+            Forum enables healthy and productive collaboration.
+          </p>
+          <div>
+            <a class="create1" href="/createpost">Create Post</a>
+          </div>
+        </div>
+        <div class="posts">
+          {{if not .Data}}
+          <p>No posts here.</p>
+          {{else}} {{range .Data}}
+          <div class="card">
+            <div class="top-section">
+              <div class="poster-info">
+                <img class="poster-image" src="assets/img.jpg" alt="Profile image" />
+                <div class="poster-details">
+                  <p class="poster-name">{{.Username}}</p>
+                  <p class="time-ago" data-timestamp="{{.Time}}"></p>
+                </div>
+              </div>
+              <p class="postCategory">{{.Categories}}</p>
+            </div>
+            <div class="title">
+              <h2 class="postTitle">{{.Title}}</h2>
+            </div>
+            <pre class="postContent" style="white-space: pre-wrap; word-wrap: break-word">{{.Content}}</pre>
+            <div class="like-comment">
+              <p class="like-dislike">
+                <a href="/like?postid={{.ID}}"> <i class="material-icons">thumb_up</i></a> {{.Likes}}
+                <a href="/dislike?postid={{.ID}}"> <i class="dislike material-icons">thumb_down</i></a> {{.Dislikes}}
+              </p>
+              <a href="/postdetails?postid={{.ID}}" class="numberof-comments"
+                ><i class="more-details fa-solid fa-message" style="color: #0074d9"></i> {{len .Comments }}</a
+              >
+            </div>
+          </div>
+          {{end}} {{end}}
+        </div>
+
+        <div class="right-column">
+          <div>
+            <h3 class="create">Top 5 users</h3>
+          </div>
+          <div class="card2">
+            {{range .TopUser}}
+            <div class="username">
+              <img class="person-image" src="assets/img.jpg" alt="Image" />
+              <h3 class="person-name"><a href="/postedby?user={{.Username}}">{{.Username}}</a></h3>
+              <span class="likes">{{.LikesCount}}</span>
+            </div>
+            <br />
+            {{end}}
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">{{template "footer.html" .}}</footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/js/updateRelativeTime.js"></script>
+  </body>
+</html>
