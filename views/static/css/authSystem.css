@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  opacity: 0.9;
+  background-image: radial-gradient(#0074d9 1.1px, transparent 1.1px), radial-gradient(#0074d9 1.1px, #f6f6f7 1.1px);
+  background-size: 44px 44px;
+  background-position: 0 0, 22px 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  background: #f9f9f9;
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  width: 400px;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(52, 52, 52, 0.3);
+  padding: 40px 30px;
+}
+
+.container .login-text {
+  color: #111;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container .login-email .input-group {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+.container .login-email .input-group input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #e7e7e7;
+  padding: 15px 20px;
+  font-size: 1rem;
+  border-radius: 30px;
+  background: transparent;
+  outline: none;
+  transition: 0.3s;
+}
+
+.container .login-email .input-group input:focus,
+.container .login-email .input-group input:valid {
+  border-color: #0074d9;
+}
+
+.logWithSocial {
+  font-family: Poppins, sans-serif;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-icons {
+  margin: 10px auto 10px;
+  text-align: center;
+}
+
+.social-icons img {
+  width: 25px;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.container .login-email .input-group .btn {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  border: none;
+  background: #0074d9;
+  outline: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.container .login-email .input-group .btn:hover {
+  transform: translateY(-3px);
+  background: #0065bd;
+}
+
+.login-register-text {
+  color: #111;
+  font-weight: 600;
+}
+
+.login-register-text a {
+  text-decoration: none;
+  color: #0074d9;
+}
+
+@media (max-width: 430px) {
+  .container {
+    width: 300px;
+  }
+
+  .container .login-social {
+    display: block;
+  }
+
+  .container .login-social a {
+    display: block;
+  }
+}

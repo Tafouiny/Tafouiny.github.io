@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="/css/details.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <title>01Forum</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        {{if .Session.Token}} {{template "navbar_connected.html" .}} {{else}} {{template "navbar_disconnected.html" .}}
+        {{end}}
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="left-column">
+        <h2>01 forum</h2>
+        <p>
+          Welcome to our vibrant community where diverse voices come together to discuss everything under the sun!. 01
+          Forum enables healthy and productive collaboration.
+        </p>
+        <div>
+          <a class="create1" href="/createpost">Create Post</a>
+        </div>
+      </div>
+      <div class="posts">
+        <div class="card">
+          <div class="top-section">
+            <div class="poster-info">
+              <img class="poster-image" src="assets/img.jpg" alt="Profile image" />
+              <div class="poster-details">
+                <p class="poster-name">{{.Data.Username}}</p>
+                <p class="time-ago" data-timestamp="{{.Data.Time}}"></p>
+              </div>
+            </div>
+            <p class="postCategory">{{.Data.Categories}}</p>
+          </div>
+          <div class="title">
+            <h2 class="postTitle">{{.Data.Title}}</h2>
+          </div>
+          <p class="postContent">{{.Data.Content}}</p>
+          <div class="like-comment">
+            <p class="like-dislike">
+              <a href="/like?postid={{.Data.ID}}"> <i class="material-icons">thumb_up</i></a> {{.Data.Likes}}
+              <a href="/dislike?postid={{.Data.ID}}"> <i class="dislike material-icons">thumb_down</i></a>
+              {{.Data.Dislikes}}
+            </p>
+          </div>
+        </div>
+        <form
+          class="comment-form"
+          action="/createcomment?postid={{.Data.ID}}"
+          method="post"
+          onsubmit="return validateComment()"
+        >
+          <input type="hidden" name="postid" value="" />
+          <input class="comment-input" type="text" name="comment" placeholder="Add a comment..." required />
+          <span id="comment-error" style="color: red; display: none">Please enter a valid comment.</span>
+          <button class="comment-submit" type="submit"><i class="fas fa-comment"></i></button>
+        </form>
+        <div class="comment-section">
+          <h3>Comments:</h3>
+          {{if not .Data.Comments}}
+          <p style="text-align: center">No comments yet. Be the first to comment !</p>
+          {{else}} {{range $comment := .Data.Comments}}
+          <p><b>{{$comment.Username}}: </b><span class="comment-content">{{$comment.Content}}</span></p>
+          <p class="like-dislike">
+            <a href="/likecomment?comment_id={{$comment.ID_Comment}}&postid={{$comment.ID_Post}}"
+              ><i class="material-icons">thumb_up</i></a
+            >{{$comment.Likes}}
+            <a href="/dislikecomment?comment_id={{$comment.ID_Comment}}&postid={{$comment.ID_Post}}"
+              ><i class="dislike material-icons">thumb_down</i></a
+            >{{$comment.Dislikes}}
+          </p>
+          {{end}} {{end}}
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div>
+          <h3 class="create">Top 5 users</h3>
+        </div>
+        <div class="card2">
+          <h3>Top Users</h3>
+          {{range .TopUser}}
+          <div class="username">
+            <img class="person-image" src="assets/img.jpg" alt="Image" />
+            <h3 class="person-name"><a href="/postedby?user={{.Username}}">{{.Username}}</a></h3>
+            <span class="likes">{{.LikesCount}}</span>
+          </div>
+          <br />
+          {{end}}
+        </div>
+      </div>
+    </div>
+    <script>
+      function validateComment() {
+        var commentInput = document.querySelector(".comment-input").value;
+        // Remove leading and trailing spaces and check if the input contains only spaces
+        if (commentInput.trim() === "") {
+          alert("Empty Comment !");
+          return false;
+        }
+        // Allow form submission if the input is not empty or contains non-space characters
+        return true;
+      }
+    </script>
+  </body>
+</html>

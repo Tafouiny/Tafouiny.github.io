@@ -1,0 +1,82 @@
+.centerIt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.page {
+  margin-bottom: 20px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Allerta Stencil";
+  background-image: radial-gradient(#0074d9 1.1px, transparent 1.1px), radial-gradient(#0074d9 1.1px, #f6f6f7 1.1px);
+  background-size: 44px 44px;
+  background-position: 0 0, 22px 22px;
+}
+
+h1, a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.section {
+  padding: 4rem 2rem;
+}
+
+.section .error {
+  font-size: 150px;
+  color: #0074d9;
+  text-shadow: 1px 1px 1px rgb(169, 169, 169), 2px 2px 1px rgb(169, 169, 169), 3px 3px 1px rgb(169, 169, 169),
+    4px 4px 1px rgb(169, 169, 169), 5px 5px 1px rgb(169, 169, 169), 6px 6px 1px rgb(169, 169, 169),
+    7px 7px 1px rgb(169, 169, 169), 8px 8px 1px rgb(169, 169, 169), 25px 25px 8px rgba(0, 0, 0, 0.2);
+}
+
+.page {
+  margin: 2rem 0;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Allerta Stencil";
+  font-size: 25px;
+  color: black;
+}
+
+.back-home {
+  background-color: white;
+  border: 3px solid rgb(141, 141, 141);
+  border-radius: 15px;
+  box-shadow: 10px 5px 5px #0074d9;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.75rem 1rem 0.6rem;
+}
+
+.back-home:hover {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 10px 10px 20px #0074d9;
+}
+
+.section a:link {
+  text-decoration: none;
+  color: black;
+}
+
+.section a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.section a:hover {
+  text-decoration: none;
+}
+
+.section a:active {
+  text-decoration: none;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/error.css" />
+    <link href="https://fonts.googleapis.com/css?family=Allerta Stencil" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <title>{{.Code}}</title>
+  </head>
+  <body>
+    <div class="centerIt">
+      <div class="section">
+        <h1 class="error">{{.Code}}</h1>
+        <div class="page">{{.Text}}</div>
+        <a class="back-home" href="/">Back to home</a>
+      </div>
+    </div>
+  </body>
+</html>

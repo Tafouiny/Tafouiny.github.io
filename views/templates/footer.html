@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/footer.css" />
+  </head>
+
+  <body>
+    <div class="pagination-container">
+      <div class="pagination">
+        {{range $index := .TotalPages}} {{if eq $index $.PageNum}}
+        <a href="/?page={{$index}}" class="active">{{$index}}</a>
+        {{else}}
+        <a href="/?page={{$index}}" class="inactive">{{$index}}</a>
+        {{end}} {{end}}
+      </div>
+    </div>
+
+    <footer class="footer2">
+      <ul class="social-icon">
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://web.facebook.com/zone01Dakar" target="_blank">
+            <i class="fa-brands fa-facebook" style="color: #fff"></i>
+          </a>
+        </li>
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://twitter.com/z01Dakar" target="_blank">
+            <i class="fa-brands fa-twitter" style="color: #fff"></i>
+          </a>
+        </li>
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://www.linkedin.com/company/zone01-dakar" target="_blank">
+            <i class="fa-brands fa-linkedin" style="color: #fff"></i>
+          </a>
+        </li>
+        <li class="social-icon__item">
+          <a class="social-icon__link" href="https://www.instagram.com/zone01dakar" target="_blank">
+            <i class="fa-brands fa-instagram" style="color: #fff"></i>
+          </a>
+        </li>
+      </ul>
+
+      <p>&copy;2023 Zone01Dakar | All Rights Reserved</p>
+    </footer>
+  </body>
+</html>

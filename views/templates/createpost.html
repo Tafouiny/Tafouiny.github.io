@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/createpost.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <title>Create Post</title>
+  </head>
+
+  <body>
+    <div class="nav">
+      {{if .Session.Token}} {{template "navbar_connected.html" .}} {{else}} {{template "navbar_disconnected.html" .}}
+      {{end}}
+    </div>
+
+    <div class="form-container">
+      <form id="post-form" action="" method="post">
+        <label for="title" class="title">Title</label>
+        <input type="text" id="title" name="title" class="form-field" required maxlength="150" />
+
+        <label for="content" class="title">Content</label>
+        <textarea
+          id="content"
+          name="content"
+          class="form-field form-field-textarea"
+          rows="10"
+          maxlength="500"
+          required
+        ></textarea>
+
+        <!-- <label for="category-select" class="title">Choose a category:</label>
+        <select name="category-select" id="category-select" class="selectedcategorystyle" multiple>
+          {{range $category := .Data}}
+          <option value="{{$category.ID}}">{{$category.Content}}</option>
+          {{end}}
+        </select> -->
+
+        <label class="title">Choose one or more categories:</label>
+        <div class="selectedcategory">
+          {{range $category := .Data}}
+          <div class="list-cat">
+            <input
+              class="box"
+              type="checkbox"
+              name="category"
+              id="category-{{$category.ID}}"
+              value="{{$category.ID}}"
+            />
+            <label class="category-list" for="category-{{$category.ID}}">{{$category.Content}}</label>
+          </div>
+          {{end}}
+        </div>
+
+        <div class="input-group">
+          <button name="submit" class="btn">Create</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

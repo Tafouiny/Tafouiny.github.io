@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <nav>
+      <a href="/">
+        <div class="logo">
+          <span class="logo-number">01</span>
+          <span class="logo-text">FORUM</span>
+        </div>
+      </a>
+      <ul class="menuItems" id="myLinks">
+        <li><a href="/" data-item="Home">Home</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" data-item="Filters">Filters</a>
+          <div class="dropdown-content">
+            <a href="/myposts">Your posts</a>
+            <a href="/likedposts">Liked posts</a>
+            <div class="sub-dropdown">
+              <a href="javascript:void(0)">Categories</a>
+              <div class="sub-dropdown-content">
+                {{range $key , $category := .Categories}}
+                <a class="category" href="/category?categoryID={{$category.ID}}">{{$category.Content}}</a>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/about" data-item="About">About</a></li>
+      </ul>
+      <div class="user-actions">
+        <span class="user-status"><i class="fas fa-circle"></i></span>
+        <a href=""><i class="fas fa-user"></i>{{.Session.Username}}</a>
+        <span class="divider">/</span>
+        <a href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </nav>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+    </script>
+    </script>
+  </body>
+  
+</html>

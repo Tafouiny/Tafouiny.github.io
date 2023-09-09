@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <title>01 FORUM</title>
+  </head>
+
+  <body>
+    {{if .Session.Token}} {{template "navbar_connected.html" .}} {{else}} {{template "navbar_disconnected.html" .}}
+    {{end}}
+
+    <div class="container">
+      <div class="left">
+        <div class="title">
+          <h3>01 FORUM</h3>
+        </div>
+
+        <div class="slogan">
+          <h1>The place to talk about anything</h1>
+        </div>
+
+        <div class="text">
+          <p>
+            Welcome to our vibrant community where diverse voices come together to discuss everything under the sun!. 01
+            Forum enables healthy and productive collaboration.
+          </p>
+        </div>
+
+        <div class="join">
+          <p>
+            Join the conversation and connect with fellow enthusiasts in our open-minded forum where every topic is fair
+            game.
+          </p>
+        </div>
+      </div>
+
+      <div class="right">
+        <img src="/assets/discussion-group.gif" alt="Discussion illlustration" width="600px" height="600px" />
+      </div>
+    </div>
+  </body>
+</html>
